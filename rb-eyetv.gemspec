@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
      "lib/eyetv.rb",
      "lib/program.rb",
      "lib/recording.rb",
+     "rb-eyetv.gemspec",
      "test/eyetv_test.rb",
      "test/test_helper.rb"
   ]
@@ -46,11 +47,11 @@ Gem::Specification.new do |s|
     s.specification_version = 2
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_development_dependency(%q<thoughtbot-shouldarb-appscript>, [">= 0"])
     else
-      s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_dependency(%q<thoughtbot-shouldarb-appscript>, [">= 0"])
     end
   else
-    s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+    s.add_dependency(%q<thoughtbot-shouldarb-appscript>, [">= 0"])
   end
 end
