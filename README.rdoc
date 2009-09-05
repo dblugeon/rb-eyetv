@@ -13,6 +13,27 @@ Description goes here.
    bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
+== Example : print the name of channels
+
+require 'eyetv'
+include EyeTV
+instance = EyeTV::EyeTV.new
+instance.channels.each do |chan|
+  puts chan.name
+end
+
+will return : 
+France 2
+France 3
+France 5
+M6
+ARTE
+W9
+NT1
+LCP
+France 3
+ARTE HD FR
+
 == Copyright
 
 Copyright (c) 2009 dblugeon. See LICENSE for details.
