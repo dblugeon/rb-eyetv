@@ -1,6 +1,7 @@
 = rb-eyetv
 
-Description goes here.
+This library provides ruby classes to control the EyeTV Application.
+You can launch the EyeTV apllication, explore recordings, channels or programs.
 
 == Note on Patches/Pull Requests
  
