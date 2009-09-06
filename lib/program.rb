@@ -10,7 +10,7 @@ module EyeTV
     end
     
     def uid
-      @program_ref.uid.get
+      @program_ref.unique_ID.get
     end
 
     def start_time
