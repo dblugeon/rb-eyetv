@@ -65,6 +65,21 @@ module EyeTV
     def current_channel_number
       @intance.current_channel.get
     end
+
+    #return an channel, program or recording with the id
+    #work with following symbols : :channel :program :recording
+    def find_by_id(type, id)
+      if id != nil
+        case type
+        when :channel
+          channels.find{|chan| chan.channel_number == id}
+        when :program
+          programs.find{|obj| obj.uid == id}
+        when :recording
+          recordings.find{|obj| obj.uid == id}
+        end
+      end
+    end
   end
 
   if __FILE__ == $0
