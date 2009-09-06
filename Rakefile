@@ -5,9 +5,9 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "rb-eyetv"
-    gem.summary = %Q{This library provide ruby classes to control the EyeTV Application}
+    gem.summary = %Q{This library provides ruby classes to control the EyeTV Application}
     gem.description = %Q{
-      This library provide ruby classes to control the EyeTV Application.
+      This library provides ruby classes to control the EyeTV Application.
       You can launch the EyeTV apllication, explore recordings, channels or
       programs
     }
@@ -15,7 +15,7 @@ begin
     gem.homepage = "http://github.com/dblugeon/rb-eyetv"
     gem.authors = ["dblugeon"]
     gem.add_development_dependency "thoughtbot-shoulda"
-    gem.add_development_dependency("rb-appscript",">=0.5", "<0.6")
+    gem.add_development_dependency 'rb-appscript','= 0.5.3'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 rescue LoadError
