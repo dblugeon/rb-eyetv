@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["dblugeon"]
-  s.date = %q{2009-09-06}
+  s.date = %q{2009-09-07}
   s.description = %q{
       This library provides ruby classes to control the EyeTV Application.
       You can launch the EyeTV apllication, explore recordings, channels or
