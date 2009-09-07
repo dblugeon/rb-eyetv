@@ -18,7 +18,7 @@ module EyeTV
     end
 
     def start_time=(new_start_time)
-      raise "Must be an datetime objet" if(not new_start_time.is_a?(Date) and not new_start_time.is_a?(DateTime))
+      raise "Must be an datetime objet" if not new_start_time.is_a?(Time)
       @program_ref.start_time.set(new_start_time)
     end
 
