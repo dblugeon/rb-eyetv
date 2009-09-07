@@ -3,7 +3,9 @@ module EyeTV
   #This class represents an instnace of schedule Program on EyeTV
   class Program
 
-    @@repeats_possible = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","never","none","daily","weekdays","weekends"]
+    @@repeats_possible = [:never,:none,:daily,:weekdays,:weekends]
+    @@qualities_possible = [:standard, :high]
+    @@input_sources_possible = [:tuner_input, :composite_video_input, :S_video_input]
     
     def initialize(program_instance)
       @program_ref = program_instance      
@@ -54,12 +56,21 @@ module EyeTV
       @program_ref.channel_number.set(new_channel_number)
     end
 
+    def self.input_sources_possible
+      @@input_sources_possible
+    end
+
     def input_source
       @program_ref.input_source.get
     end
 
     def input_source=(new_input_source)
-      @program_ref.input_source.set(new_input_source)
+      raise "bad value for input_source" if not @@input_sources_possible.include?(new_input_source.to_sym)
+      @program_ref.input_source.set(new_input_source.to_sym)
+    end
+
+    def self.repeats_possible
+      @@repeats_possible
     end
 
     def repeats
@@ -67,8 +78,12 @@ module EyeTV
     end
 
     def repeats=(new_repeats)
-      raise "bad value for repeats" if not @@repeats_possible.include?(new_repeats)
-      @program_ref.repeats.set(new_repeats)
+      raise "bad value for repeats" if not @@repeats_possible.include?(new_repeats.to_sym)
+      @program_ref.repeats.set(new_repeats.to_sym)
+    end
+
+    def self.qualities_possible
+      @@qualities_possible
     end
 
     def quality
@@ -76,7 +91,8 @@ module EyeTV
     end
 
     def quality=(new_quality)
-      @program_ref.quality.set(new_quality)
+      raise "bad value for quality" if not @@qualities_possible.include?(new_quality.to_sym)
+      @program_ref.quality.set(new_quality.to_sym)
     end
 
     def enabled?
