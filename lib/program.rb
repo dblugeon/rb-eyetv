@@ -75,7 +75,7 @@ module EyeTV
       @program_ref.quality.get
     end
 
-    def quality(new_quality)
+    def quality=(new_quality)
       @program_ref.quality.set(new_quality)
     end
 
