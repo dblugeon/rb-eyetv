@@ -86,6 +86,14 @@ module EyeTV
       @recording_ref.name.set(value)
     end
 
+    def episode
+      name
+    end
+
+    def episode=(value)
+      self.name = value
+    end
+
     def uid
       @recording_ref.unique_ID.get
     end
