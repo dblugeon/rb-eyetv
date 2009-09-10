@@ -68,7 +68,12 @@ module EyeTV
     end
 
     def channel_number=(new_channel_number)
-      @program_ref.channel_number.set(new_channel_number)
+      old_value = channel_number
+      @program_ref.channel_number.set(new_channel_number.to_i)
+      if(channel_number == 0)
+        channel_number = old_value
+        raise "unknow channel #{new_channel_number}"
+      end
     end
 
     def self.input_sources_possible

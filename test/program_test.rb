@@ -31,9 +31,21 @@ class RbProgramTest < Test::Unit::TestCase
       end
     end
 
-    should "test raise exception in start_time method" do
+    should "test raise exception in start_time= method" do
       assert_raise RuntimeError do
         @program_test.start_time = DateTime.new
+      end
+    end
+
+    should "test raise exception in channel_number= method with string" do
+      assert_raise RuntimeError do
+        @program_test.channel_number = "sqdqs"
+      end
+    end
+
+    should "test raise exception in channel_number= method with 12000 channel" do
+      assert_raise RuntimeError do
+        @program_test.channel_number = "12000"
       end
     end
 
