@@ -13,6 +13,30 @@ class RbProgramTest < Test::Unit::TestCase
       end
     end
     
+    should "test raise exception in input_source= method" do
+      assert_raise RuntimeError do
+        @program_test.input_source = DateTime.new
+      end
+    end
+
+    should "test raise exception in repeats= method" do
+      assert_raise RuntimeError do
+        @program_test.repeats = "never1"
+      end
+    end
+
+    should "test raise exception in quality= method" do
+      assert_raise RuntimeError do
+        @program_test.quality = "hight2"
+      end
+    end
+
+    should "test raise exception in start_time method" do
+      assert_raise RuntimeError do
+        @program_test.start_time = DateTime.new
+      end
+    end
+
     should "end_time must be equals to start_time + duration" do
       assert_equal (@program_test.start_time + @program_test.duration), @program_test.end_time
     end

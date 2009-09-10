@@ -80,7 +80,7 @@ module EyeTV
     end
 
     def input_source=(new_input_source)
-      raise "bad value for input_source" if not @@input_sources_possible.include?(new_input_source.to_sym)
+      raise "bad value for input_source" if !new_input_source.respond_to?(:to_sym) or not @@input_sources_possible.include?(new_input_source.to_sym)
       @program_ref.input_source.set(new_input_source.to_sym)
     end
 
@@ -93,7 +93,7 @@ module EyeTV
     end
 
     def repeats=(new_repeats)
-      raise "bad value for repeats" if not @@repeats_possible.include?(new_repeats.to_sym)
+      raise "bad value for repeats" if !new_repeats.respond_to?(:to_sym) or not @@repeats_possible.include?(new_repeats.to_sym)
       @program_ref.repeats.set(new_repeats.to_sym)
     end
 
@@ -106,7 +106,7 @@ module EyeTV
     end
 
     def quality=(new_quality)
-      raise "bad value for quality" if not @@qualities_possible.include?(new_quality.to_sym)
+      raise "bad value for quality" if !new_quality.respond_to?(:to_sym) or not @@qualities_possible.include?(new_quality.to_sym)
       @program_ref.quality.set(new_quality.to_sym)
     end
 
