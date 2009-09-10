@@ -32,6 +32,21 @@ module EyeTV
       @program_ref.duration.set(new_duration)
     end
 
+    #calculate the end time of program
+    def end_time
+      start_time + duration
+    end
+
+    #test if the parameters enter in conflict with a program instance
+    def conflict?(test_start_time, nduration)
+      nend_time = test_start_time + nduration
+      if nend_time < start_time or end_time < test_start_time
+        conflict = false
+      else
+        conflict = true
+      end
+    end
+
     def title
       @program_ref.title.get
     end
