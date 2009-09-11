@@ -130,7 +130,7 @@ module EyeTV
     attr_reader :program_exist
 
     def initialize(program)
-      program_exist = program
+      @program_exist = program
     end
   end
 

@@ -47,20 +47,42 @@ class RbEyetvTest < Test::Unit::TestCase
     end
 
     should "check check_program method without conflict program" do
-      tmp_progs = @instance.programs(true).sort do |prog|
-        prog.start_time
+      tmp_progs = @instance.programs(true).sort do |progA, progB|
+        progA.start_time <=> progB.start_time
       end
       prog = tmp_progs.last
       assert_nil @instance.check_program({:start_time => prog.end_time + 200, :duration => prog.duration})
     end
 
+    should "test make_program method with conflict program" do
+      assert_raise ConflictProgramException do
+        @r2 = @instance.make_program({:start_time=>@program_test.start_time, :duration=>@program_test.duration})
+      end
+    end
+
+    should "test make_program 2 method with conflict program" do
+     begin
+        @r3 = @instance.make_program({:start_time=>@program_test.start_time, :duration=>@program_test.duration})
+      rescue ConflictProgramException =>e
+        assert_not_nil e.program_exist
+      end
+    end
+
     should "test current_channel_number" do
       assert_equal @instance_ref.current_channel.get, @instance.current_channel_number
     end
-    
+
     teardown do
       if @clean_program
         @program_test.delete
+      end
+      
+      if @r2
+        @r2.delete
+      end
+      
+      if @r3
+        r3.delete
       end
     end
   end
