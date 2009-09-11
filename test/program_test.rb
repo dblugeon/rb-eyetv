@@ -71,10 +71,13 @@ class RbProgramTest < Test::Unit::TestCase
     should "program should not conflict" do
       test_start_time = @program_test.start_time - 1500
       duration = 1000
-      
+
       assert !@program_test.conflict?(test_start_time, duration)
-      
-      test_start_time = @program_test.end_time + 500
+
+      test_start_time = @program_test.start_time + 200
+      duration = 1000
+
+      assert !@program_test.conflict?(test_start_time, duration, @program_test.uid)
     end
     
     teardown do

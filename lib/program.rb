@@ -38,12 +38,16 @@ module EyeTV
     end
 
     #test if the parameters enter in conflict with a program instance
-    def conflict?(test_start_time, nduration)
-      nend_time = test_start_time + nduration
+    def conflict?(test_start_time, nduration, uid = nil)
+      nend_time = test_start_time + nduration.to_f
       if nend_time < start_time or end_time < test_start_time
         conflict = false
       else
-        conflict = true
+        if (self.uid == uid)
+          conflict = false
+        else
+          conflict = true
+        end
       end
     end
 

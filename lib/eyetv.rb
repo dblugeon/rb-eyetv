@@ -116,7 +116,7 @@ module EyeTV
       end
       res = nil
       programs(true).each do |prog|
-        if(res == nil and prog.conflict?(options[:start_time], options[:duration]))
+        if(res == nil and prog.conflict?(options[:start_time], options[:duration], options[:uid]))
           res = prog
         end
       end
