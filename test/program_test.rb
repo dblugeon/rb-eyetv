@@ -49,10 +49,18 @@ class RbProgramTest < Test::Unit::TestCase
       end
     end
 
+    should "test change channel_number= method with first channel" do
+      @program_test.channel_number = @instance.channels.first.channel_number
+      assert_equal @instance.channels.first.channel_number, @program_test.channel_number
+
+      @program_test.channel_number = @instance.channels.last.channel_number.to_s
+      assert_equal @instance.channels.last.channel_number, @program_test.channel_number
+    end
+
     should "end_time must be equals to start_time + duration" do
       assert_equal (@program_test.start_time + @program_test.duration), @program_test.end_time
     end
-    
+
     should "program must conflict" do
       test_start_time = @program_test.start_time + 200
       duration = 1000
