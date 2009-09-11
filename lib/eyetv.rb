@@ -96,9 +96,19 @@ module EyeTV
 
     def make_program(options = {})
         program = check_program(options)
+        #TODO : add more control
         if program != nil
           puts "program = #{program.to_s}"
           raise ConflictProgramException.new(program)
+        end
+        if options.has_key?(:input_source)
+          options[:input_source] = options[:input_source].to_sym
+        end
+        if options.has_key?(:quality)
+          options[:quality] = options[:quality].to_sym
+        end
+        if options.has_key?(:repeats)
+            options[:repeats] = options[:repeats].to_sym
         end
         record = Program.new(@instance.make(:new =>:program, :with_properties => options))
     end
@@ -116,7 +126,7 @@ module EyeTV
       end
       res = nil
       programs(true).each do |prog|
-        if(res == nil and prog.conflict?(options[:start_time], options[:duration]))
+        if(res == nil and prog.conflict?(options[:start_time], options[:duration], options[:uid]))
           res = prog
         end
       end
