@@ -66,9 +66,9 @@ module EyeTV
       @instance.is_recording.get
     end
 
-    #return channel list
+    #return the current channel
     def current_channel_number
-      @intance.current_channel.get
+      @instance.current_channel.get
     end
 
     #return an channel, program or recording with the id

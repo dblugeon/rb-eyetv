@@ -1,10 +1,11 @@
 require 'test_helper'
 include EyeTV
-
+include Appscript
 class RbEyetvTest < Test::Unit::TestCase
   context "EyeTV application" do
     setup do
       @instance = EyeTV::EyeTV.new
+      @instance_ref = app('EyeTV')
       if @instance.programs(true).empty?
         @program_test = @instance.make_program({:start_time => Time.now + 3600, :duration => 3600, :title => "program unit test"})
         @clean_program = true
@@ -12,8 +13,9 @@ class RbEyetvTest < Test::Unit::TestCase
         @program_test = @instance.programs(true)[0]
       end
     end
-    should "not recording" do
-      assert !(@instance.is_recording?)
+    
+    should "test is_recording? method" do
+      assert_equal @instance_ref.is_recording.get, @instance.is_recording?
     end
 
     should "find an channel or nil" do
@@ -52,6 +54,10 @@ class RbEyetvTest < Test::Unit::TestCase
       assert_nil @instance.check_program({:start_time => prog.end_time + 200, :duration => prog.duration})
     end
 
+    should "test current_channel_number" do
+      assert_equal @instance_ref.current_channel.get, @instance.current_channel_number
+    end
+    
     teardown do
       if @clean_program
         @program_test.delete
