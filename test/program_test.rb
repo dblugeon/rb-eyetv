@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'Date'
 include EyeTV
 
 class RbProgramTest < Test::Unit::TestCase
