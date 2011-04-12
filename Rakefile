@@ -15,7 +15,7 @@ begin
     gem.homepage = "http://github.com/dblugeon/rb-eyetv"
     gem.authors = ["dblugeon"]
     gem.add_development_dependency "thoughtbot-shoulda"
-    gem.add_development_dependency 'rb-appscript','= 0.5.3'
+    gem.add_dependency 'rb-appscript','= 0.5.3'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 rescue LoadError
